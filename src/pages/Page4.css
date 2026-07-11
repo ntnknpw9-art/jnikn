@@ -1,0 +1,137 @@
+.page4 {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #f5f1e8 0%, #e8dcc8 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding: 40px;
+}
+
+.letter-container {
+  perspective: 1000px;
+  max-width: 85vw;
+  width: 100%;
+}
+
+.letter {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(0, 0, 0, 0.05);
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: #2d1810;
+  line-height: 2.2;
+  text-align: right;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(196, 167, 125, 0.2);
+  position: relative;
+  animation: paperFloat 3s ease-in-out infinite;
+}
+
+@keyframes paperFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.01) 2px,
+      rgba(0, 0, 0, 0.01) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.01) 2px,
+      rgba(0, 0, 0, 0.01) 4px
+    );
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.letter-seal {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #c4a77d;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  animation: sealFloat 2s ease-in-out infinite;
+}
+
+@keyframes sealFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+.next-button.page4-button {
+  margin-top: 40px;
+  padding: 12px 28px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: white;
+  background: linear-gradient(135deg, #2d1810, #4a2817);
+  border: 2px solid #c4a77d;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.next-button.page4-button:hover {
+  background: linear-gradient(135deg, #4a2817, #5a3825);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .page4 {
+    padding: 20px;
+  }
+
+  .letter {
+    padding: 30px 25px;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .letter-seal {
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+  }
+
+  .next-button.page4-button {
+    padding: 10px 24px;
+    font-size: 1rem;
+    margin-top: 30px;
+  }
+}
