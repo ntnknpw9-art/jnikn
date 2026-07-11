@@ -1,0 +1,147 @@
+.page6 {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0d1929 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  perspective: 1000px;
+}
+
+.page6-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.page6-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  z-index: 10;
+  text-align: center;
+}
+
+.center-heart {
+  font-size: 5rem;
+  filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.5));
+  margin-bottom: 20px;
+}
+
+.page6-text {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  color: #c4a77d;
+  line-height: 2.2;
+  max-width: 90vw;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  font-weight: 400;
+}
+
+.page6-text.first-text {
+  animation: fadeInUp 1s ease-out;
+}
+
+.page6-text.second-text {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-heart {
+  position: fixed;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+  pointer-events: none;
+  z-index: 100;
+}
+
+.final-button {
+  margin-top: 40px;
+  padding: 15px 35px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: #0a0e27;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.final-button:hover {
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
+  transform: translateY(-2px);
+}
+
+.final-button:active {
+  transform: translateY(0);
+}
+
+.success-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Caveat', cursive;
+  font-size: 3.5rem;
+  color: #ff69b4;
+  font-weight: 700;
+  text-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+  z-index: 200;
+  animation: scaleUp 1s ease-out;
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .center-heart {
+    font-size: 3rem;
+    margin-bottom: 15px;
+  }
+
+  .page6-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .final-button {
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    margin-top: 30px;
+  }
+
+  .success-message {
+    font-size: 2.5rem;
+  }
+}

@@ -1,0 +1,196 @@
+.page5 {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1f2e 0%, #2d2a3a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  position: relative;
+  padding: 40px 20px;
+}
+
+.page5-title {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 700;
+  color: #c4a77d;
+  margin-bottom: 50px;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 40px;
+  max-width: 1000px;
+  width: 100%;
+  padding: 20px;
+  place-items: center;
+  margin-bottom: 50px;
+}
+
+.polaroid {
+  width: 160px;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.polaroid:hover {
+  box-shadow: 0 15px 40px rgba(196, 167, 125, 0.4);
+}
+
+.polaroid-image {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.image-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.polaroid-text {
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: #2d1810;
+  text-align: center;
+  line-height: 1.4;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.expanded-polaroid {
+  width: 90%;
+  max-width: 400px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.expanded-image {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.placeholder-image.large {
+  width: 100%;
+  height: 100%;
+  font-size: 5rem;
+}
+
+.expanded-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #2d1810;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.next-button.page5-button {
+  margin-top: auto;
+  padding: 12px 28px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: #0a0e27;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.next-button.page5-button:hover {
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+  .page5 {
+    padding: 20px 10px;
+  }
+
+  .page5-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .photos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .polaroid {
+    width: 130px;
+  }
+
+  .polaroid-text {
+    font-size: 0.8rem;
+  }
+}
