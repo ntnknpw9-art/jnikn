@@ -1,0 +1,215 @@
+.page2-how-it-started {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Paper background */
+.paper-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    );
+  background-color: #1a1a1f;
+  z-index: 0;
+}
+
+.soft-light {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(
+    circle at 50% 30%,
+    rgba(196, 167, 125, 0.15) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.page2-container {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 800px;
+  padding: 60px 50px;
+  background: rgba(30, 30, 40, 0.8);
+  border-radius: 5px;
+  border: 1px solid rgba(196, 167, 125, 0.2);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  animation: pageSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page2-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.page2-title {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #c4a77d;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(196, 167, 125, 0.3);
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.typewriter-text {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: rgba(196, 167, 125, 0.95);
+  line-height: 1.8;
+  margin: 0;
+  opacity: 0;
+  animation: typewriterAppear 0.8s ease-out forwards;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+@keyframes typewriterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation */
+.page-controls {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(196, 167, 125, 0.1);
+  border: 2px solid rgba(196, 167, 125, 0.4);
+  color: #c4a77d;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button:hover {
+  background: rgba(196, 167, 125, 0.2);
+  border-color: #c4a77d;
+  transform: scale(1.1);
+}
+
+.next-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(196, 167, 125, 0.2), rgba(196, 167, 125, 0.1));
+  border: 2px solid #c4a77d;
+  border-radius: 50px;
+  color: #c4a77d;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: buttonFadeIn 0.6s ease-out;
+}
+
+@keyframes buttonFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.next-button:hover {
+  background: linear-gradient(135deg, rgba(196, 167, 125, 0.3), rgba(196, 167, 125, 0.2));
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(196, 167, 125, 0.5);
+}
+
+@media (max-width: 768px) {
+  .page2-container {
+    padding: 40px 30px;
+    width: 95%;
+  }
+
+  .page2-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .typewriter-text {
+    font-size: 1rem;
+  }
+
+  .page-controls {
+    gap: 10px;
+    bottom: 40px;
+  }
+
+  .nav-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .next-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}

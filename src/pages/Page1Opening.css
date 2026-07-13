@@ -1,0 +1,256 @@
+.page1-opening {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sky background */
+.sky-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 60px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 50px 50px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 10px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 130px 40px, #ddd, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 130px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: twinkling 3s ease-in-out infinite;
+}
+
+@keyframes twinkling {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.moon {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 30% 30%, #fff, #f0f0f0);
+  border-radius: 50%;
+  top: 5%;
+  right: 10%;
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.moon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, transparent 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+}
+
+.floating-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-particles::before,
+.floating-particles::after {
+  content: '';
+  position: absolute;
+  background-image:
+    radial-gradient(circle, rgba(196, 167, 125, 0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(196, 167, 125, 0.5) 1px, transparent 1px),
+    radial-gradient(circle, rgba(196, 167, 125, 0.6) 1px, transparent 1px);
+  background-size: 150px 150px, 250px 250px, 200px 200px;
+  background-position: 0 0, 50px 50px, 100px 100px;
+  width: 100%;
+  height: 100%;
+  animation: floatingParticles 20s linear infinite;
+}
+
+.floating-particles::after {
+  animation: floatingParticles 30s linear infinite reverse;
+  animation-delay: -15s;
+}
+
+@keyframes floatingParticles {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+/* Content */
+.page1-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.handwritten-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.handwritten-title h1 {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(3rem, 12vw, 5rem);
+  color: #c4a77d;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 0 30px rgba(196, 167, 125, 0.5);
+  letter-spacing: 2px;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 0 30px rgba(196, 167, 125, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 50px rgba(196, 167, 125, 0.8);
+  }
+}
+
+.heart {
+  font-size: 2.5rem;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+.subtitle {
+  opacity: 0;
+  animation: subtitleFadeIn 1.5s ease-out forwards;
+}
+
+@keyframes subtitleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subtitle p {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  color: rgba(196, 167, 125, 0.9);
+  margin: 0;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.subtitle-2 {
+  opacity: 0;
+  animation: subtitleFadeIn 1.5s ease-out forwards;
+}
+
+.subtitle-2 p {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  color: rgba(196, 167, 125, 0.9);
+  margin: 0;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+/* Button */
+.story-button {
+  margin-top: 40px;
+  padding: 15px 35px;
+  background: linear-gradient(135deg, rgba(196, 167, 125, 0.2), rgba(196, 167, 125, 0.1));
+  border: 2px solid rgba(196, 167, 125, 0.6);
+  border-radius: 50px;
+  color: #c4a77d;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(196, 167, 125, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(196, 167, 125, 0.6);
+  }
+}
+
+.story-button:hover {
+  background: linear-gradient(135deg, rgba(196, 167, 125, 0.3), rgba(196, 167, 125, 0.2));
+  border-color: #c4a77d;
+  transform: scale(1.05);
+  box-shadow: 0 0 50px rgba(196, 167, 125, 0.8);
+}
+
+.story-button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .page1-content {
+    gap: 30px;
+  }
+
+  .handwritten-title h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle p,
+  .subtitle-2 p {
+    font-size: 1.1rem;
+  }
+
+  .story-button {
+    padding: 12px 28px;
+    font-size: 1.1rem;
+  }
+}

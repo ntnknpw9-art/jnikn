@@ -1,0 +1,128 @@
+.noa-love-story {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #0a0a0f;
+  position: relative;
+}
+
+.story-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.page-wrapper {
+  width: 100%;
+  height: 100vh;
+  animation: pageEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.page-wrapper.transitioning {
+  animation: pageExit 0.6s cubic-bezier(0.36, 0, 0.66, -0.56) forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Page indicators */
+.page-indicators {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(196, 167, 125, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(196, 167, 125, 0.5);
+}
+
+.indicator.active {
+  background: #c4a77d;
+  width: 30px;
+  border-radius: 5px;
+  border-color: #c4a77d;
+}
+
+.indicator:hover {
+  background: rgba(196, 167, 125, 0.6);
+}
+
+/* Navigation hints */
+.nav-hint {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: rgba(196, 167, 125, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.nav-hint.next-hint {
+  bottom: 80px;
+}
+
+.nav-hint.prev-hint {
+  top: 30px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-indicators {
+    bottom: 20px;
+    gap: 8px;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+  }
+
+  .indicator.active {
+    width: 24px;
+  }
+
+  .nav-hint {
+    font-size: 1.5rem;
+  }
+}
