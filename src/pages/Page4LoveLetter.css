@@ -1,0 +1,231 @@
+.page4-love-letter {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.letter-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 15, 0.95),
+    rgba(26, 18, 32, 0.95)
+  );
+  z-index: 0;
+}
+
+.letter-light {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(196, 167, 125, 0.15) 0%,
+    transparent 60%
+  );
+  z-index: 1;
+}
+
+.page4-container {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 650px;
+  display: flex;
+  justify-content: center;
+}
+
+.letter-paper {
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
+  background: linear-gradient(
+    135deg,
+    #f5f3f0,
+    #fafaf8
+  );
+  padding: 50px 40px;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(196, 167, 125, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  position: relative;
+  animation: letterSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  overflow: hidden;
+}
+
+.letter-paper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    );
+  pointer-events: none;
+}
+
+@keyframes letterSlideIn {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(20deg) translateZ(100px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateZ(0);
+  }
+}
+
+.letter-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.letter-line {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: #2a2a2a;
+  margin: 0;
+  line-height: 1.8;
+  opacity: 0;
+  animation: letterLineAppear 0.4s ease-out forwards;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+@keyframes letterLineAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.signature {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  font-size: 2rem;
+  animation: signatureAppear 0.6s ease-out 2s forwards;
+  opacity: 0;
+}
+
+@keyframes signatureAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Navigation */
+.page-controls {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(196, 167, 125, 0.1);
+  border: 2px solid rgba(196, 167, 125, 0.4);
+  color: #c4a77d;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button:hover {
+  background: rgba(196, 167, 125, 0.2);
+  border-color: #c4a77d;
+  transform: scale(1.1);
+}
+
+.next-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(196, 167, 125, 0.2), rgba(196, 167, 125, 0.1));
+  border: 2px solid #c4a77d;
+  border-radius: 50px;
+  color: #c4a77d;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-button:hover {
+  background: linear-gradient(135deg, rgba(196, 167, 125, 0.3), rgba(196, 167, 125, 0.2));
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(196, 167, 125, 0.5);
+}
+
+@media (max-width: 768px) {
+  .letter-paper {
+    padding: 40px 30px;
+    aspect-ratio: auto;
+    min-height: 500px;
+  }
+
+  .letter-line {
+    font-size: 1rem;
+  }
+
+  .signature {
+    bottom: 30px;
+    right: 30px;
+    font-size: 1.5rem;
+  }
+
+  .page-controls {
+    gap: 10px;
+    bottom: 40px;
+  }
+
+  .next-button {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+  }
+}
