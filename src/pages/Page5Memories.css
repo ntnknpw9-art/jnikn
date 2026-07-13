@@ -1,0 +1,336 @@
+.page5-memories {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.memories-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1220 100%);
+  z-index: 0;
+}
+
+.memories-light {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(196, 167, 125, 0.1) 0%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+.floating-dust {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle, rgba(196, 167, 125, 0.6) 1px, transparent 1px),
+    radial-gradient(circle, rgba(196, 167, 125, 0.4) 1px, transparent 1px),
+    radial-gradient(circle, rgba(196, 167, 125, 0.5) 1px, transparent 1px);
+  background-size: 150px 150px, 250px 250px, 200px 200px;
+  background-position: 0 0, 50px 50px, 100px 100px;
+  animation: floatingDust 30s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes floatingDust {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+.page5-container {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.memories-title {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  color: #c4a77d;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(196, 167, 125, 0.3);
+  animation: titleFadeIn 0.6s ease-out;
+}
+
+@keyframes titleFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  width: 100%;
+  justify-items: center;
+}
+
+.memory-polaroid {
+  width: 140px;
+  height: 170px;
+  background: linear-gradient(135deg, #f5f3f0, #fafaf8);
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: rotate(0deg) scale(1);
+  opacity: 0;
+  animation: polaroidSlideIn 0.6s ease-out forwards;
+}
+
+@keyframes polaroidSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.memory-polaroid:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 25px 60px rgba(196, 167, 125, 0.4);
+}
+
+.memory-image {
+  width: 100%;
+  height: 110px;
+  background: linear-gradient(135deg, #c4a77d, #a0826d);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-image::after {
+  content: '📸';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  opacity: 0.3;
+}
+
+.memory-text {
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: #2a2a2a;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Modal */
+.memory-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #f5f3f0, #fafaf8);
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  position: relative;
+  animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: transparent;
+  font-size: 2rem;
+  color: #c4a77d;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg) scale(1.2);
+}
+
+.modal-image {
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #c4a77d, #a0826d);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  opacity: 0.5;
+}
+
+.modal-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #2a2a2a;
+  text-align: center;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Navigation */
+.page-controls {
+  position: fixed;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(196, 167, 125, 0.1);
+  border: 2px solid rgba(196, 167, 125, 0.4);
+  color: #c4a77d;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button:hover {
+  background: rgba(196, 167, 125, 0.2);
+  border-color: #c4a77d;
+  transform: scale(1.1);
+}
+
+.next-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgba(196, 167, 125, 0.2), rgba(196, 167, 125, 0.1));
+  border: 2px solid #c4a77d;
+  border-radius: 50px;
+  color: #c4a77d;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: buttonFadeIn 0.6s ease-out;
+}
+
+@keyframes buttonFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.next-button:hover {
+  background: linear-gradient(135deg, rgba(196, 167, 125, 0.3), rgba(196, 167, 125, 0.2));
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(196, 167, 125, 0.5);
+}
+
+@media (max-width: 768px) {
+  .page5-container {
+    width: 95%;
+    gap: 30px;
+  }
+
+  .memories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .memory-polaroid {
+    width: 120px;
+    height: 150px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .page-controls {
+    gap: 10px;
+    bottom: 40px;
+  }
+}
